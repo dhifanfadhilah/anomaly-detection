@@ -8,10 +8,34 @@ const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
   const [loading, setLoading] = useState(false); // State for loading
   const navigate = useNavigate();
 
+  // Validasi file CSV
+  const validateFile = (selectedFile) => {
+    if (!selectedFile) {
+      setError("No file selected.");
+      return false;
+    }
+
+    const fileType = selectedFile.type;
+    const fileName = selectedFile.name;
+
+    // Cek tipe file dan ekstensi untuk memastikan file CSV
+    if (fileType !== "text/csv" && !fileName.endsWith(".csv")) {
+      setError("Please upload a valid CSV file.");
+      return false;
+    }
+
+    // Reset error jika valid
+    setError("");
+    return true;
+  };
+
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setFile(selectedFile);
-    setError("");
+    if (validateFile(selectedFile)) {
+      setFile(selectedFile);
+    } else {
+      setFile(null); // Reset file jika invalid
+    }
   };
 
   const handleUpload = async () => {
@@ -20,7 +44,7 @@ const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
       return;
     }
 
-    setLoading(true); // Start loading animation
+    setLoading(true); // Mulai loading animation
 
     const formData = new FormData();
     formData.append("file", file);
@@ -57,8 +81,11 @@ const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
         onChange={handleFileChange}
         className="file-input"
       />
-      <label htmlFor="fileInput" className={`file-input-label ${file ? "file-selected" : ""}`}>
-        {file ? "Choosed" : "Choose a file"}
+      <label
+        htmlFor="fileInput"
+        className={`file-input-label ${file ? "file-selected" : ""}`}
+      >
+        {file ? "File Chosen" : "Choose a file"}
       </label>
 
       {file && <p className="file-name">{file.name}</p>}
@@ -66,7 +93,7 @@ const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
       <button
         onClick={handleUpload}
         className="upload-button"
-        disabled={!file || loading} // Disable the button when loading
+        disabled={!file || loading} // Disable button when loading
       >
         {loading ? "Uploading..." : "Upload"}
       </button>
