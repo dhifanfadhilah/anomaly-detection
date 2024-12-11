@@ -1,0 +1,252 @@
+/* Main container for the results page */
+.results-container {
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+/* Header section */
+.results-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.results-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Summary Section */
+.summary-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.summary-card {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 1.25rem;
+  color: #e60012;
+}
+
+.summary-card p {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Venn Diagram and ChartBar Section - Bersebelahan */
+.diagram-chart-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px; /* Jarak antar elemen */
+  margin-bottom: 40px;
+}
+
+.venn-container,
+.chart-container {
+  flex: 1;
+  text-align: center;
+}
+
+.venn-diagram {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+/* Sites Table */
+/* Tabel Sites with Anomalies */
+.site-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-table th {
+  background-color: #e60012;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+.site-id-table {
+  font-weight: bold;
+  color: #e60012;
+}
+
+.site-table td {
+  padding: 12px 15px;
+  color: #333;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.site-table tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+  /* cursor: pointer; */
+}
+
+.site-table th:first-child,
+.site-table td:first-child {
+  text-align: center;
+  width: 5%;
+}
+
+.site-table th:last-child,
+.site-table td:last-child {
+  text-align: center;
+  width: 20%;
+}
+
+/* Tombol Site ID */
+.site-id-button {
+  background-color: transparent;
+  color: #e60012;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95 rem;
+}
+
+.site-id-button:hover {
+  text-decoration: underline;
+}
+
+.site-detail-button:hover {
+  cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+
+.pagination button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #e60012;
+  background-color: #fff;
+  color: #e60012;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button.active {
+  background-color: #e60012;
+  color: #fff;
+  border-color: #e60012;
+}
+
+.pagination button:hover {
+  background-color: #e60012;
+  color: #fff;
+}
+
+/* Responsiveness untuk layar kecil */
+@media (max-width: 768px) {
+  .site-table td {
+    font-size: 0.85rem;
+  }
+
+  .pagination button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Site Details Section */
+.site-details-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Site Details Card */
+.site-details-card {
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative; /* Tambahkan position relative agar tombol close bisa di posisi absolute */
+}
+
+/* Tombol Close (X) */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #e60012;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #cc0009;
+}
+
+/* Site Details Card Header */
+.site-details-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.site-details-card p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.site-details-card h4 {
+  font-size: 1.25rem;
+  color: #e60012;
+  margin-top: 20px;
+}
+
+
+/* Responsiveness untuk layar kecil */
+@media (max-width: 768px) {
+  .diagram-chart-section {
+    flex-direction: column; /* Susun elemen secara vertikal di layar kecil */
+    align-items: center;
+  }
+
+  .venn-container,
+  .chart-container {
+    flex: unset;
+    width: 100%;
+  }
+
+  .site-table th, .site-table td {
+    padding: 8px;
+  }
+}

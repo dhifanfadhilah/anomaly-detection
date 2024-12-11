@@ -1,0 +1,81 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./FileUpload.css";
+
+const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // State for loading
+  const navigate = useNavigate();
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    setError("");
+  };
+
+  const handleUpload = async () => {
+    if (!file) {
+      setError("No file selected.");
+      return;
+    }
+
+    setLoading(true); // Start loading animation
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("month", selectedMonth);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/upload/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Upload failed");
+      }
+
+      const result = await response.json();
+      console.log("Upload successful:", result);
+      onUploadSuccess(result);
+      navigate("/results");
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      setError(error.message || "An unexpected error occurred.");
+    } finally {
+      setLoading(false); // Stop loading animation
+    }
+  };
+
+  return (
+    <div className="upload-container">
+      <input
+        type="file"
+        id="fileInput"
+        onChange={handleFileChange}
+        className="file-input"
+      />
+      <label htmlFor="fileInput" className={`file-input-label ${file ? "file-selected" : ""}`}>
+        {file ? "Choosed" : "Choose a file"}
+      </label>
+
+      {file && <p className="file-name">{file.name}</p>}
+
+      <button
+        onClick={handleUpload}
+        className="upload-button"
+        disabled={!file || loading} // Disable the button when loading
+      >
+        {loading ? "Uploading..." : "Upload"}
+      </button>
+
+      {loading && <div className="loader"></div>} {/* Loading spinner */}
+
+      {error && <p className="error-message">{error}</p>}
+    </div>
+  );
+};
+
+export default FileUpload;

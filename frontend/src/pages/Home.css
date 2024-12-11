@@ -1,0 +1,88 @@
+/* General Container for the Page */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+}
+
+/* Centralized Content Section */
+.content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Heading Style */
+.heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e60012; /* PT Telkomsel Red */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Subheading Style */
+.subheading {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Month Selector Styling */
+.month-selector {
+  margin-bottom: 30px;
+}
+
+/* Month Label Styling */
+.month-label {
+  font-size: 1rem;
+  color: #333;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Dropdown Styling */
+.month-dropdown {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Button & File Upload Styling */
+.file-upload-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Add some mobile responsiveness */
+@media (max-width: 768px) {
+  .content {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1rem;
+  }
+
+  .month-dropdown {
+    font-size: 0.9rem;
+  }
+}

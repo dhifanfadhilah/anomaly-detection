@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "chartjs-chart-venn": "^4.3.5"
+  }
+}

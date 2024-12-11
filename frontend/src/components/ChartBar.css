@@ -1,0 +1,18 @@
+/* Container untuk Chart */
+.chart-container {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Mengisi lebar kontainer */
+    height: 450px; /* Tentukan tinggi tetap atau 100% jika ingin fleksibel */
+    min-height: 300px; /* Menambahkan batas minimal tinggi */
+  }
+  
+  /* Menambahkan judul chart */
+  /* .chart-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+  }
+   */

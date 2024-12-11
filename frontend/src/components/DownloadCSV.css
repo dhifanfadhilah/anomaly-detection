@@ -1,0 +1,27 @@
+/* Download Button Styles */
+.download-csv-button {
+  background-color: #e60012; /* Button background color */
+  color: white; /* Text color */
+  border: 2px solid #e60012; /* Border color */
+  padding: 12px 30px; /* Vertical and horizontal padding */
+  font-size: 1rem; /* Font size */
+  font-weight: bold; /* Bold text */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+  text-transform: uppercase; /* Uppercase text */
+}
+
+.download-csv-button:hover {
+  background-color: white; /* Background changes on hover */
+  color: #e60012; /* Text color changes */
+  border-color: #e60012; /* Border color changes */
+}
+
+.download-csv-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.download-csv-button:active {
+  background-color: #cc0009; /* Darker red when button is pressed */
+}
