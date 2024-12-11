@@ -97,14 +97,11 @@ const Results = ({ data }) => {
             alt="Venn Diagram"
           />
         </div>
-        {/* <div className="chart-container"> */}
-        {/* <h2>Kabupaten Chart</h2> */}
         <ChartBar
           labels={data.kab_labels}
           values={data.kab_values}
           graphType="Kabupaten"
         />
-        {/* </div> */}
       </section>
 
       {/* Tabel Sites with Anomalies */}
@@ -130,12 +127,7 @@ const Results = ({ data }) => {
               >
                 <td>{(currentPage - 1) * sitesPerPage + index + 1}</td>
                 <td className="site-id-table">
-                  {/* <button
-                    onClick={() => fetchSiteDetails(site)}
-                    className="site-id-button"
-                  > */}
                   {site}
-                  {/* </button> */}
                 </td>
                 <td>
                   {
@@ -214,10 +206,6 @@ const Results = ({ data }) => {
               values={siteDetails.kwh_values}
               graphType="kWh"
             />
-
-            {/* <button onClick={closeDetails} className="close-button">
-              Close
-            </button> */}
           </div>
         </section>
       )}

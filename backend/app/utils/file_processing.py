@@ -77,7 +77,6 @@ def process_file(content: bytes, selected_month: int) -> dict:
 
     # Generate visualizations
     venn_diagram = generate_venn_diagram(tagihan_anomalies, kwh_anomalies)
-    # kab_chart = generate_kab_chart(total_anomalies_data)
     kab_count = total_anomalies_data["Cluster"].str.replace("TO", "").value_counts()
     kab_labels = kab_count.index.tolist()
     kab_values = kab_count.values.tolist()
@@ -90,7 +89,6 @@ def process_file(content: bytes, selected_month: int) -> dict:
     processed_data["tagihan_columns_filtered"] = tagihan_columns_filtered
     processed_data["kwh_columns_filtered"] = kwh_columns_filtered
     processed_data["data_kwh"] = data_kwh
-    # processed_data["type_df"] = type_df
 
     return {
         "venn_diagram": venn_diagram,
