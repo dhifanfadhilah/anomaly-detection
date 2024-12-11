@@ -14,7 +14,7 @@ const Home = ({ onUploadSuccess }) => {
       <div className="content">
         <h1 className="heading">Welcome to Anomaly Detection</h1>
         <p className="subheading">Upload your CSV file to start the analysis.</p>
-
+3
         <div className="month-selector">
           <label htmlFor="month" className="month-label">Select Month:</label>
           <select
