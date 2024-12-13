@@ -1,15 +1,17 @@
-# Use the Python 3 alpine official image
-# https://hub.docker.com/_/python
+# Gunakan image Python 3 Alpine untuk ukuran kecil
 FROM python:3-alpine
 
-# Create and change to the app directory.
+# Set working directory di dalam container
 WORKDIR /app
 
-# Copy local code to the container image.
+# Salin seluruh kode aplikasi ke dalam container
 COPY . .
 
-# Install project dependencies
+# Install dependensi yang diperlukan
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the web service on container startup.
-CMD ["uvicorn", "main:app", "--bind", "::"]
+# Set environment variable untuk port (Railway otomatis mengatur PORT)
+ENV PORT 8000
+
+# Jalankan aplikasi menggunakan uvicorn, bind ke 0.0.0.0 dan port yang diberikan oleh Railway
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
