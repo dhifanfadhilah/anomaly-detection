@@ -2,6 +2,7 @@ import pandas as pd
 from app.utils.visualizations import generate_venn_diagram, generate_kab_chart, generate_site_graph
 from app.utils.data_analysis import normalize_monthly_data, clean_data, get_columns_by_month
 import io
+import datetime
 
 # In-memory storage for session data
 processed_data = {}
@@ -30,9 +31,12 @@ def list_to_dataframe(original_data, list_anomalies):
 def process_file(content: bytes, selected_month: int) -> dict:
     data = pd.read_csv(io.BytesIO(content), header=1)
 
+    current_year = str(datetime.datetime.now().year)[-2:]
+
     # Clean and process data
     data_filtered = clean_data(data)
-    tagihan_columns = ['Jan-24', 'Feb-24', 'Mar-24', 'Apr-24', 'May-24', 'Jun-24', 'Jul-24', 'Aug-24', 'Sep-24', 'Oct-24', 'Nov-24', 'Dec-24']
+    # tagihan_columns = ['Jan-24', 'Feb-24', 'Mar-24', 'Apr-24', 'May-24', 'Jun-24', 'Jul-24', 'Aug-24', 'Sep-24', 'Oct-24', 'Nov-24', 'Dec-24']
+    tagihan_columns = [f'{month}-{current_year}' for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
     kwh_columns = ['∑KwH', '∑KwH.1', '∑KwH.2', '∑KwH.3', '∑KwH.4', '∑KwH.5', '∑KwH.6', '∑KwH.7', '∑KwH.8', '∑KwH.9', '∑KwH.10', '∑KwH.11']
 
     # Normalize data
