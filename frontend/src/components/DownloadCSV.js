@@ -3,7 +3,7 @@ import "./DownloadCSV.css"; // Make sure to import the CSS file
 
 const DownloadCSV = () => {
   const downloadCSV = () => {
-    fetch("http://127.0.0.1:8000/download_csv/") // Backend URL for the CSV
+    fetch("https://anomaly-detection-production.up.railway.app/download_csv/") // Backend URL for the CSV
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to download CSV");
