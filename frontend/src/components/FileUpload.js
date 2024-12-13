@@ -80,6 +80,7 @@ const FileUpload = ({ selectedMonth, onUploadSuccess }) => {
         id="fileInput"
         onChange={handleFileChange}
         className="file-input"
+        accept=".csv, text/csv"
       />
       <label
         htmlFor="fileInput"
