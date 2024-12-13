@@ -193,14 +193,14 @@ const Results = ({ data }) => {
             <p>Status Bayar: {siteDetails.status_bayar}</p>
             <p>Kabupaten: {siteDetails.kabupaten}</p>
 
-            <h4>Bill Graph</h4>
+            <h4>Grafik Tagihan</h4>
             <ChartGraph
               labels={siteDetails.graph_labels}
               values={siteDetails.tagihan_values}
               graphType="Tagihan"
             />
 
-            <h4>kWh Graph</h4>
+            <h4>Grafik Kwh</h4>
             <ChartGraph
               labels={siteDetails.graph_labels}
               values={siteDetails.kwh_values}
